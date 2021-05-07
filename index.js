@@ -38,7 +38,23 @@ module.exports = ({ dest, semi = ';' }) => {
             outValue = `'${value}'`;
           }
 
-          if (isObject(value) || Array.isArray(value)) {
+          // 第一种情况： ['opacity', '200ms', 'linear'] => 'opacity 200ms linear'
+          // 第二种情况：[
+          //   ['transform', '300ms', 'cubic-bezier(0.23, 1, 0.32, 1)'],
+          //   ['opacity', '300ms', 'cubic-bezier(0.23, 1, 0.32, 1)'],
+          // ]  => 'transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1)
+          if (Array.isArray(value)) {
+            const isChildFromArray = value.some(Array.isArray);
+
+            if (isChildFromArray) {
+              outValue = `'${value
+                .map(val => (Array.isArray(val) ? val.join(' ') : val))
+                .join(', ')}'`;
+            } else {
+              outValue = `'${value.join(' ')}'`;
+            }
+          }
+          if (isObject(value)) {
             outValue = JSON.stringify(value, null, '  ');
           }
 
