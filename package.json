@@ -1,7 +1,7 @@
 {
   "name": "gulp-sass-vars-convertor",
-  "version": "0.0.2",
-  "description": "Sass 变量转换为 JSON 的转换器",
+  "version": "0.0.3",
+  "description": "Sass 变量转换器",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
