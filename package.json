@@ -1,6 +1,6 @@
 {
   "name": "gulp-sass-vars-convertor",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Sass 变量转换器",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,7 @@
     }
   },
   "dependencies": {
+    "decamelize": "^5.0.0",
     "plugin-error": "^1.0.1",
     "sass-vars-convertor": "^0.0.1",
     "through2": "^4.0.2",

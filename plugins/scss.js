@@ -1,4 +1,5 @@
 const { isFunction, isObject } = require('../utils');
+const decamelize = require('decamelize');
 
 module.exports = function genScssCode(vars, options) {
   const { filterKeys } = options;
@@ -30,7 +31,7 @@ module.exports = function genScssCode(vars, options) {
           .join(',\n')})`;
       }
 
-      lines.push(`$${item}: ${value};`);
+      lines.push(`$${decamelize(item, { separator: '-' })}: ${value};`);
     });
 
   return `${lines.join('\n')}\n`;

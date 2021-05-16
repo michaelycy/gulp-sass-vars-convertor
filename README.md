@@ -1,4 +1,4 @@
-# gulp-webp
+# gulp-sass-vars-convertor
 
 > Sass 变量转换为 JSON 的转换器。
 
